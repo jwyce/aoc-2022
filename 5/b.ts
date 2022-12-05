@@ -41,7 +41,6 @@ console.log('crates', crates);
 console.log('instructions', instructions);
 
 instructions.forEach((i) => {
-	// javascript remove the last amt items from crates[i.from] and add them to crates[i.to]
 	crates[i.to] = [...crates[i.to], ...crates[i.from].slice(-i.amt)];
 	crates[i.from] = crates[i.from].slice(0, -i.amt);
 });
