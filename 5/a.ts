@@ -1,7 +1,7 @@
 export const x = '';
 const input = await Deno.readTextFile('./input.txt');
 
-const parseCrates = (input: string) => {
+export const parseCrates = (input: string) => {
 	const crates: Record<number, string[]> = {};
 	const numStacks = input.split('\n').at(-1)?.trim().split(/\s+/).length;
 	if (!numStacks) {
@@ -23,7 +23,7 @@ const parseCrates = (input: string) => {
 	return crates;
 };
 
-const parseInstructions = (input: string) => {
+export const parseInstructions = (input: string) => {
 	return input.split('\n').map((line) => {
 		const nums = line.match(/\d+/g)?.map(Number);
 		if (!nums) throw new Error('invalid input');
@@ -33,9 +33,9 @@ const parseInstructions = (input: string) => {
 	});
 };
 
-const [unparsedCrates, _unparsedInstructions] = input.split('\n\n');
+const [unparsedCrates, unparsedInstructions] = input.split('\n\n');
 const crates = parseCrates(unparsedCrates);
-const instructions = parseInstructions(_unparsedInstructions);
+const instructions = parseInstructions(unparsedInstructions);
 
 console.log('crates', crates);
 console.log('instructions', instructions);
