@@ -45,11 +45,9 @@ movements.forEach((m) => {
 
 		for (let k = 1; k <= 9; k++) {
 			knots[k] = nextPos(knots[k], knots[k - 1]);
-
-			if (k === 9) {
-				visted.set(`${knots[k].x},${knots[k].y}`, { ...knots[k] });
-			}
 		}
+
+		visted.set(`${knots[9].x},${knots[9].y}`, { ...knots[9] });
 	}
 });
 
